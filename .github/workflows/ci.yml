@@ -89,3 +89,29 @@ jobs:
         with:
           command: test
           args: --no-default-features --features alloc
+  test-fuzz:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        rust: [1.70.0]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.rust }}
+          override: true
+
+      - name: Install cargo-fuzz
+        run: cargo install cargo-fuzz
+
+      - name: Run fuzz tests -- Cursor (no_std)
+        run: cargo fuzz run -s none fuzz_cursor -- -runs=10000000
+
+      - name: Run fuzz tests -- Read (no_std)
+        run: cargo fuzz run -s none fuzz_read -- -runs=10000000
+
+      - name: Run fuzz tests -- Write (no_std)
+        run: cargo fuzz run -s none fuzz_write -- -runs=10000000
