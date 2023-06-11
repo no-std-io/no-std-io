@@ -1,0 +1,40 @@
+[package]
+name = "no_std_io-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.no_std_io]
+path = ".."
+features = ["alloc"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+
+[[bin]]
+name = "fuzz_read"
+path = "fuzz_targets/fuzz_read.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_write"
+path = "fuzz_targets/fuzz_write.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "fuzz_cursor"
+path = "fuzz_targets/fuzz_cursor.rs"
+test = false
+doc = false
