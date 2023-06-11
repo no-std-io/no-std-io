@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/no-std-io/no-std-io/workflows/CI/badge.svg)](https://github.com/no-std-io/no-std-io/actions)
 [![Documentation](https://docs.rs/no_std_io/badge.svg)](https://docs.rs/no_std_io/latest/no_std_io)
-![Minimum Supported Rust Version (MSRV)](https://img.shields.io/badge/rust-v1.55.0+-purple)
+![Minimum Supported Rust Version (MSRV)](https://img.shields.io/badge/rust-v1.56.0+-purple)
 
 ## Fork
 
@@ -13,7 +13,7 @@
 Ever wanted a `Cursor` or the `Error` trait in `no_std`? Well now you can have it. A 'fork' of Rust's `std` modules for `no_std` environments, with the added benefit of optionally taking advantage of `alloc`.
 
 The goal of this crate is to provide a stable interface for building I/O and error trait functionality in
-`no_std` environments. The current code corresponds to the most recent stable API of Rust 1.55.0. 
+`no_std` environments. The current code corresponds to the most recent stable API of Rust 1.56.0.
 It is also a goal to achieve a true alloc-less experience, with opt-in alloc support.
 
 This crate works on `stable` with some limitations in functionality, and `nightly` without limitations by adding
