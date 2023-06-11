@@ -1,3 +1,5 @@
+//! Traits for I/O
+
 #[cfg(feature = "nightly")]
 mod buffered;
 mod cursor;

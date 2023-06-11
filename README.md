@@ -1,8 +1,14 @@
-# core2
+# no-std-io
 
-[![Actions Status](https://github.com/core2-rs/core2/workflows/CI/badge.svg)](https://github.com/core2-rs/core2/actions)
-[![Documentation](https://docs.rs/core2/badge.svg)](https://docs.rs/core2)
-![Minimum Supported Rust Version (MSRV)](https://img.shields.io/badge/rust-v1.55.0+-blue)
+[![Actions Status](https://github.com/no-std-io/no-std-io/workflows/CI/badge.svg)](https://github.com/no-std-io/no-std-io/actions)
+[![Documentation](https://docs.rs/no_std_io/badge.svg)](https://docs.rs/no_std_io/latest/no_std_io)
+![Minimum Supported Rust Version (MSRV)](https://img.shields.io/badge/rust-v1.55.0+-purple)
+
+## Fork
+
+`no-std-io` is a fork of [core2](https://github.com/technocreatives/core2).
+
+## Overview
 
 Ever wanted a `Cursor` or the `Error` trait in `no_std`? Well now you can have it. A 'fork' of Rust's `std` modules for `no_std` environments, with the added benefit of optionally taking advantage of `alloc`.
 
@@ -19,11 +25,11 @@ This crate is `std` by default -- use no default features to get `no_std` mode.
 
 ```toml
 [dependencies]
-core2 = "0.3"
+no_std_io = "0.5"
 ```
 
-Add the crate, use the things you would usually want from `std::io`, but instead from `core2::io`, and
-use `core2::error::Error` in place of `std::error::Error`.
+Add the crate, use the things you would usually want from `std::io`, but instead from `no_std_io::io`, and
+use `no_std_io::error::Error` in place of `std::error::Error`.
 
 ### Features
 
@@ -43,12 +49,6 @@ Other than items perhaps being entirely missing or certain functions unavailable
 
 - Using the buffer types currently requires **nightly** due to the use of const generics.
 - Using `copy` or the buffer types with `std` support currently requires **nightly** due to the `initializer` API.
-
-## Where is it used?
-
-All of the below are works in progress, but should help with demonstrating how to use this crate.
-
-- [thiserror_core2](https://github.com/bbqsrc/thiserror-core2): fork of `thiserror` using the `core2::error::Error` trait.
 
 ## License
 

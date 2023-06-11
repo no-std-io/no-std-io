@@ -1,18 +1,18 @@
 [package]
-name = "core2"
-version = "0.4.0"
-authors = ["Brendan Molloy <brendan@bbqsrc.net>"]
+name = "no_std_io"
+version = "0.5.3"
+authors = ["Brendan Molloy <brendan@bbqsrc.net>", "no_std I/O Developers"]
 description = "The bare essentials of std::io for use in no_std. Alloc support is optional."
 license = "Apache-2.0 OR MIT"
 edition = "2018"
-repository = "https://github.com/bbqsrc/core2"
+repository = "https://github.com/no-std-io/no-std-io"
 categories = ["no-std"]
 
 [dependencies]
 memchr = { version = "2", default-features = false }
 
 [features]
-default = ["std"]
+default = []
 std = ["alloc"]
 alloc = []
 nightly = []
