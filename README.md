@@ -1,6 +1,6 @@
 # core2
 
-[![Actions Status](https://github.com/bbqsrc/core2/workflows/CI/badge.svg)](https://github.com/bbqsrc/core2/actions)
+[![Actions Status](https://github.com/core2-rs/core2/workflows/CI/badge.svg)](https://github.com/core2-rs/core2/actions)
 [![Documentation](https://docs.rs/core2/badge.svg)](https://docs.rs/core2)
 ![Minimum Supported Rust Version (MSRV)](https://img.shields.io/badge/rust-v1.55.0+-blue)
 
