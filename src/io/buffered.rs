@@ -27,12 +27,12 @@ use core::{cmp, fmt};
 ///
 /// # Examples
 ///
-/// ```no_run
+/// ```ignore
 /// use std::prelude::*;
 /// use no_std_io::io::BufReader;
 /// use std::fs::File;
 ///
-/// fn main() -> core::result::Result<()> {
+/// fn main() -> std::io::Result<()> {
 ///     let f = File::open("log.txt")?;
 ///     let mut reader = BufReader::new(f);
 ///
@@ -55,11 +55,11 @@ impl<R: Read, const S: usize> BufReader<R, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufReader;
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f = File::open("log.txt")?;
     ///     let reader = BufReader::new(f);
     ///     Ok(())
@@ -82,11 +82,11 @@ impl<R, const S: usize> BufReader<R, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufReader;
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f1 = File::open("log.txt")?;
     ///     let reader = BufReader::new(f1);
     ///
@@ -104,11 +104,11 @@ impl<R, const S: usize> BufReader<R, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufReader;
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f1 = File::open("log.txt")?;
     ///     let mut reader = BufReader::new(f1);
     ///
@@ -129,10 +129,10 @@ impl<R, const S: usize> BufReader<R, S> {
     /// # Examples
     ///
     /// ```no_run
-    /// use std::{BufReader, BufRead};
+    /// use std::io::{BufReader, BufRead};
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f = File::open("log.txt")?;
     ///     let mut reader = BufReader::new(f);
     ///     assert!(reader.buffer().is_empty());
@@ -152,10 +152,10 @@ impl<R, const S: usize> BufReader<R, S> {
     /// # Examples
     ///
     /// ```no_run
-    /// use std::{BufReader, BufRead};
+    /// use std::io::{BufReader, BufRead};
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f = File::open("log.txt")?;
     ///     let mut reader = BufReader::new(f);
     ///
@@ -176,11 +176,11 @@ impl<R, const S: usize> BufReader<R, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufReader;
     /// use std::fs::File;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let f1 = File::open("log.txt")?;
     ///     let reader = BufReader::new(f1);
     ///
@@ -325,6 +325,7 @@ impl<R: Seek, const S: usize> Seek for BufReader<R, S> {
 /// ```no_run
 /// use std::prelude::*;
 /// use std::net::TcpStream;
+/// use std::io::Write;
 ///
 /// let mut stream = TcpStream::connect("127.0.0.1:34254").unwrap();
 ///
@@ -337,7 +338,7 @@ impl<R: Seek, const S: usize> Seek for BufReader<R, S> {
 /// overhead of a system call per byte written. We can fix this with a
 /// `BufWriter<W>`:
 ///
-/// ```no_run
+/// ```ignore
 /// use std::prelude::*;
 /// use no_std_io::io::BufWriter;
 /// use std::net::TcpStream;
@@ -373,7 +374,7 @@ pub struct BufWriter<W: Write, const S: usize> {
 ///
 /// # Examples
 ///
-/// ```no_run
+/// ```ignore
 /// use no_std_io::io::BufWriter;
 /// use std::net::TcpStream;
 ///
@@ -403,7 +404,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -502,7 +503,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -521,7 +522,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -538,7 +539,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -555,7 +556,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -580,7 +581,7 @@ where
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -678,7 +679,7 @@ impl<W> IntoInnerError<W> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -711,7 +712,7 @@ impl<W> IntoInnerError<W> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use no_std_io::io::BufWriter;
     /// use std::net::TcpStream;
     ///
@@ -939,12 +940,12 @@ impl<'a, W: Write, const S: usize> Write for LineWriterShim<'a, W, S> {
 /// We can use `LineWriter` to write one line at a time, significantly
 /// reducing the number of actual writes to the file.
 ///
-/// ```no_run
+/// ```ignore
 /// use std::fs::{self, File};
 /// use std::prelude::*;
 /// use no_std_io::io::LineWriter;
 ///
-/// fn main() -> core::result::Result<()> {
+/// fn main() -> std::io::Result<()> {
 ///     let road_not_taken = b"I shall be telling this with a sigh
 /// Somewhere ages and ages hence:
 /// Two roads diverged in a wood, and I -
@@ -990,11 +991,11 @@ impl<W: Write, const S: usize> LineWriter<W, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use std::fs::File;
     /// use no_std_io::io::LineWriter;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let file = File::create("poem.txt")?;
     ///     let file = LineWriter::new(file);
     ///     Ok(())
@@ -1010,11 +1011,11 @@ impl<W: Write, const S: usize> LineWriter<W, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use std::fs::File;
     /// use no_std_io::io::LineWriter;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let file = File::create("poem.txt")?;
     ///     let file = LineWriter::new(file);
     ///
@@ -1033,11 +1034,11 @@ impl<W: Write, const S: usize> LineWriter<W, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use std::fs::File;
     /// use no_std_io::io::LineWriter;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let file = File::create("poem.txt")?;
     ///     let mut file = LineWriter::new(file);
     ///
@@ -1060,11 +1061,11 @@ impl<W: Write, const S: usize> LineWriter<W, S> {
     ///
     /// # Examples
     ///
-    /// ```no_run
+    /// ```ignore
     /// use std::fs::File;
     /// use no_std_io::io::LineWriter;
     ///
-    /// fn main() -> core::result::Result<()> {
+    /// fn main() -> std::io::Result<()> {
     ///     let file = File::create("poem.txt")?;
     ///
     ///     let writer: LineWriter<File> = LineWriter::new(file);
