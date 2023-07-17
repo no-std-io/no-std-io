@@ -494,7 +494,7 @@ where
     fn write_to_buf(&mut self, buf: &[u8]) -> usize {
         let available = S - self.len;
         let amt_to_buffer = available.min(buf.len());
-        (&mut self.buf[available..]).copy_from_slice(&buf[..amt_to_buffer]);
+        self.buf[available..].copy_from_slice(&buf[..amt_to_buffer]);
         self.len += amt_to_buffer;
         amt_to_buffer
     }
