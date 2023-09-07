@@ -292,7 +292,7 @@ impl Error {
     /// let custom_error2 = Error::new(ErrorKind::Interrupted, custom_error.into_inner().unwrap());
     /// ```
     pub fn new(kind: ErrorKind, error: &'static str) -> Error {
-        Self::_new(kind, error.into())
+        Self::_new(kind, error)
     }
 
     fn _new(kind: ErrorKind, error: &'static str) -> Error {

@@ -35,20 +35,19 @@ use `no_std_io::error::Error` in place of `std::error::Error`.
 
 - **std**: enables `std` pass-throughs for the polyfilled types, but allows accessing the new types
 - **alloc**: enable aspects of the `Read` and `Write` traits that require `alloc` support (WIP)
-- **nightly**: enables **nightly**-only features, such as `BufReader` and `BufWriter` with const generic buffers.
+- **nightly**: enables **nightly**-only features.
 
 ### Differences to `std::io`
 
 - No `std::io::Error`, so we have our own copy without any `Os` error functions
 - `IoSlice` and the `*_vectored` family of functions are not implemented.
-- `BufReader` and `BufWriter` have a different signature, as they now use a const generic bounded array for the internal buffer. (Requires **nightly** feature)
+- `BufReader` and `BufWriter` have a different signature, as they now use a const generic bounded array for the internal buffer.
 
 Other than items perhaps being entirely missing or certain functions unavailable on some traits, no function signatures have been changed.
 
 ### Limitations
 
-- Using the buffer types currently requires **nightly** due to the use of const generics.
-- Using `copy` or the buffer types with `std` support currently requires **nightly** due to the `initializer` API.
+- `Error` trait is not implemented for `!` because `never_type` feature is not yet stabilized.
 
 ## License
 
