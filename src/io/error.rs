@@ -47,6 +47,7 @@ pub type Result<T> = result::Result<T, Error>;
 /// [`Read`]: crate::io::Read
 /// [`Write`]: crate::io::Write
 /// [`Seek`]: crate::io::Seek
+#[derive(Clone, Copy, Eq, Hash, Ord, PartialEq, PartialOrd)]
 pub struct Error {
     repr: Repr,
 }
@@ -59,12 +60,13 @@ impl fmt::Debug for Error {
     }
 }
 
+#[derive(Clone, Copy, Eq, Hash, Ord, PartialEq, PartialOrd)]
 enum Repr {
     Simple(ErrorKind),
     Custom(Custom),
 }
 
-#[derive(Debug)]
+#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
 struct Custom {
     kind: ErrorKind,
     error: &'static str,
@@ -198,7 +200,7 @@ impl From<std::io::ErrorKind> for ErrorKind {
     /// ```
     /// use no_std_io::io::{Error, ErrorKind};
     ///
-    /// let not_found = ErrorKind::from(std::io::ErrorKind::NotFound);
+    /// let not_found = ErrorKind::from(ErrorKind::NotFound);
     /// let err: Error = not_found.into();
     /// assert_eq!("entity not found", format!("{}", err));
     /// ```
